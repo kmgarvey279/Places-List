@@ -1,0 +1,22 @@
+@using PlacesList.Models;
+
+<h1>Places I've been:</h1>
+<ul>
+
+@if (Model.Count == 0)
+{
+  <p>You have no places on your list!</p>
+}
+@if(Model.Count != 0)
+{
+  @foreach (Place place in Model)
+  {
+    <li><a href='/places/@place.GetId()'>@place.GetCityName()</a></li>
+  }
+}
+
+</ul>
+<a href="/places/new">Add a new destination.</a>
+<form action="/places/delete" method="post">
+  <button type="submit" name="button">Clear All Places</button>
+</form>
